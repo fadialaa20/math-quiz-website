@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
   <meta charset="UTF-8">
   <title>اتصل بنا</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="موقع تفاعلي يقدم أسئلة واختبارات في مادة الرياضيات للصفوف من الأول حتى الثاني عشر بطريقة مشوقة مع التصحيح الفوري.">
-    <meta name="keywords" content="تعليم, رياضيات, اختبارات, أسئلة, بنك أسئلة, الصف الأول, الصف الثاني, الصف الثالث, تعليم إلكتروني, امتحانات تفاعلية, تعليم عن بعد">
-    <meta name="author" content="بنك أسئلة الرياضيات">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3656354195059392"
-     crossorigin="anonymous"></script>
+  <meta name="description"
+    content="موقع تفاعلي يقدم أسئلة واختبارات في مادة الرياضيات للصفوف من الأول حتى الثاني عشر بطريقة مشوقة مع التصحيح الفوري.">
+  <meta name="keywords"
+    content="تعليم, رياضيات, اختبارات, أسئلة, بنك أسئلة, الصف الأول, الصف الثاني, الصف الثالث, تعليم إلكتروني, امتحانات تفاعلية, تعليم عن بعد">
+  <meta name="author" content="بنك أسئلة الرياضيات">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3656354195059392"
+    crossorigin="anonymous"></script>
 
-    
+  <!-- EmailJS -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("QcSrr4o61zHvM3t9B"); // Your Public Key
+    })();
+  </script>
+
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -31,7 +41,8 @@
       align-items: center;
     }
 
-    input, textarea {
+    input,
+    textarea {
       width: 80%;
       padding: 10px;
       margin: 10px 0;
@@ -54,11 +65,11 @@
     }
   </style>
 </head>
+
 <body>
 
-
   <h1>اتصل بنا</h1>
-  <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+  <form id="contact-form">
     <label for="name">الاسم:</label>
     <input type="text" id="name" name="name" required>
 
@@ -84,12 +95,32 @@
       الرجوع إلى الصفحة الرئيسية
     </button>
   </div>
-  
-    <!-- Math -->
-    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3656354195059392"
+
+  <!-- Math -->
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3656354195059392"
     data-ad-slot="8524841326"></ins>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
+
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      emailjs.send("service_jfzi0vj", "template_1wbyifl", {
+        name: this.name.value,
+        email: this.email.value,
+        message: this.message.value,
+      }).then(() => {
+        alert('تم إرسال رسالتك بنجاح!');
+        this.reset();
+      }, (error) => {
+        alert('حدث خطأ أثناء الإرسال. الرجاء المحاولة لاحقًا.');
+        console.error(error);
+      });
+    });
+  </script>
 </body>
+
 </html>
