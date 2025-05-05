@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بنك أسئلة الرياضيات</title>
+  <meta name="description"
+    content="موقع تفاعلي يقدم أسئلة واختبارات في مادة الرياضيات للصفوف من الأول حتى الثاني عشر بطريقة مشوقة مع التصحيح الفوري.">
+  <meta name="keywords"
+    content="تعليم, رياضيات, اختبارات, أسئلة, بنك أسئلة, الصف الأول, الصف الثاني, الصف الثالث, تعليم إلكتروني, امتحانات تفاعلية, تعليم عن بعد">
+  <meta name="author" content="بنك أسئلة الرياضيات">
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3656354195059392"
+     crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <!-- Math -->
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3656354195059392"
+    data-ad-slot="8524841326"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  <h1>أسئلة رياضيات - الصف الأول</h1>
+
+  <div id="timer" style="font-size: 20px; font-weight: bold; color: red; margin: 20px 0; display: none;">
+    الوقت المتبقي: <span id="time">--:--</span>
+  </div>
+  
+  <div id="quiz"></div>
+
+  <button onclick="submitQuiz()">تصحيح</button>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="retryBtn" onclick="retryQuiz()" style="
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    ">إعادة المحاولة</button>
+  </div>
+  
+
+  <div id="result" class="result" style="display:none;"></div>
+  <div id="encouragement" class="encouragement" style="display:none;"></div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <button onclick="window.location.href='index.html'" style="
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    ">
+      الرجوع إلى الصفحة الرئيسية
+    </button>
+  </div>
+  
+  <script>
+
+let resultShown = false;
+
+    const allQuestions = [
+      { question: "ما ناتج 1 + 2 ؟", choices: ["2", "3", "4", "5"], answer: "3" },
+      { question: "ما ناتج 5 - 2 ؟", choices: ["2", "3", "4", "1"], answer: "3" },
+      { question: "ما هو الرقم الذي يلي 6؟", choices: ["5", "7", "8", "4"], answer: "7" },
+      { question: "أكمل: 2، 4، ___، 8", choices: ["5", "6", "7", "9"], answer: "6" },
+      { question: "كم عدد أصابع اليد؟", choices: ["5", "6", "7", "10"], answer: "5" },
+      { question: "اختر الرقم الأصغر: 9، 6، 3، 7", choices: ["3", "6", "7", "9"], answer: "3" },
+      { question: "ما هو الرقم الذي يسبق 4؟", choices: ["3", "2", "5", "6"], answer: "3" },
+      { question: "ما ناتج 2 + 5 ؟", choices: ["6", "7", "8", "9"], answer: "7" },
+      { question: "ما الرقم بين 1 و 3؟", choices: ["2", "4", "5", "0"], answer: "2" },
+      { question: "أكمل: 10، 20، ___", choices: ["25", "15", "30", "40"], answer: "30" },
+      { question: "ما هو الرقم الأكبر: 4 أم 9؟", choices: ["4", "9", "3", "5"], answer: "9" },
+      { question: "ما ناتج 3 + 0 ؟", choices: ["0", "2", "3", "4"], answer: "3" },
+      { question: "ما ناتج 4 - 1 ؟", choices: ["2", "3", "4", "1"], answer: "3" },
+      { question: "أكمل: 5، 10، ___", choices: ["15", "12", "20", "25"], answer: "15" },
+      { question: "كم عدد أرجل الطاولة؟", choices: ["5", "6", "7", "10"], answer: "4" },
+      { question: "ما هو نصف 4؟", choices: ["1", "2", "3", "4"], answer: "2" },
+      { question: "كم عدد الأيام في الأسبوع؟", choices: ["5", "6", "7", "8"], answer: "7" },
+      { question: "ما ناتج 6 - 4 ؟", choices: ["1", "2", "3", "4"], answer: "2" },
+      { question: "ما الرقم الذي يلي 9؟", choices: ["10", "11", "8", "7"], answer: "10" },
+      { question: "ما ناتج 3 + 3 ؟", choices: ["5", "6", "7", "4"], answer: "6" },
+      { question: "أكمل: 1، 3، 5، ___", choices: ["6", "7", "8", "9"], answer: "7" },
+      { question: "اختر الرقم الزوجي: 5، 7، 4، 9", choices: ["5", "4", "7", "9"], answer: "4" },
+      { question: "ما ناتج 7 - 3 ؟", choices: ["4", "5", "3", "2"], answer: "4" },
+      { question: "أكمل: 2، 4، 6، ___", choices: ["7", "8", "9", "5"], answer: "8" },
+      { question: "أكمل: 0، 1، 2، ___", choices: ["3", "4", "5", "6"], answer: "3" },
+      { question: "ما هو الرقم التالي في السلسلة: 3، 6، 9، ___", choices: ["10", "12", "11", "15"], answer: "12" },
+      { question: "كم عدد الأذنين لدى الإنسان؟", choices: ["1", "2", "3", "4"], answer: "2" },
+      { question: "ما ناتج 10 - 5 ؟", choices: ["4", "5", "6", "3"], answer: "5" },
+      { question: "ما هو ناتج 0 + 4 ؟", choices: ["4", "0", "3", "1"], answer: "4" },
+      { question: "اختر الرقم الأكبر: 1، 5، 2، 4", choices: ["1", "2", "5", "4"], answer: "5" },
+      { question: "كم عدد أصابع اليدين معًا؟", choices: ["5", "8", "10", "12"], answer: "10" },
+      { question: "ما الرقم الذي يسبق 1؟", choices: ["0", "1", "2", "3"], answer: "0" },
+      { question: "ما هو ناتج 8 - 2 ؟", choices: ["5", "6", "7", "8"], answer: "6" },
+      { question: "أكمل: 1، 2، 3، ___", choices: ["4", "5", "6", "7"], answer: "4" },
+      { question: "ما هو العدد الذي يليه 0؟", choices: ["1", "0", "2", "3"], answer: "1" },
+      { question: "كم عدد أرجل الكرسي؟", choices: ["2", "3", "4", "5"], answer: "4" },
+      { question: "ما هو الرقم التالي: 10، 9، 8، ___", choices: ["6", "5", "7", "4"], answer: "7" },
+      { question: "ما ناتج 2 + 7 ؟", choices: ["6", "7", "9", "10"], answer: "9" },
+      { question: "ما ناتج 3 × 2 ؟", choices: ["6", "8", "5", "4"], answer: "6" }
+    ];
+
+    // Function to select 10 random questions from the array
+    function getRandomQuestions(questions, num) {
+      const shuffled = [...questions].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, num);
+    }
+
+
+    function submitQuiz() {
+  let score = 0;
+  const totalQuestions = 10;
+  const answers = document.querySelectorAll('input[type="radio"]:checked');
+  const correctAnswers = randomQuestions.map((q) => q.answer);
+
+  // تصحيح وتلوين الأسئلة
+  randomQuestions.forEach((q, index) => {
+    const radios = document.getElementsByName(`question${index}`);
+    radios.forEach((radio) => {
+      radio.disabled = true; // تعطيل التغيير
+      if (radio.value === q.answer) {
+        radio.parentElement.style.color = 'green'; // صحيح
+      } else if (radio.checked) {
+        radio.parentElement.style.color = 'red'; // خطأ
+      }
+    });
+
+    const selected = Array.from(radios).find(r => r.checked);
+    if (selected && selected.value === q.answer) {
+      score++;
+    }
+  });
+
+  // عرض النتيجة
+  let resultText = `لقد أجبت على ${score} من ${totalQuestions} سؤالًا بشكل صحيح.`;
+  document.getElementById("result").innerHTML = resultText;
+  document.getElementById("result").style.display = "block";
+
+  resultShown = true;
+
+
+  // رسالة تشجيعية
+  let encouragementText = "";
+  if (score === totalQuestions) {
+    encouragementText = "ممتاز! كل الأسئلة صحيحة.";
+  } else if (score >= totalQuestions * 0.7) {
+    encouragementText = "جيد جدًا! لديك بعض الأخطاء.";
+  } else {
+    encouragementText = "تحتاج إلى مراجعة بعض الأسئلة، لا تيأس!";
+  }
+  document.getElementById("encouragement").innerHTML = encouragementText;
+  document.getElementById("encouragement").style.display = "block";
+  
+
+  // عرض زر إعادة المحاولة
+  document.getElementById("retryBtn").style.display = "inline-block";
+
+  
+
+  
+}
+
+
+    function loadQuestions() {
+      const quizContainer = document.getElementById("quiz");
+      randomQuestions = getRandomQuestions(allQuestions, 10);  // Store the random questions
+      randomQuestions.forEach((q, index) => {
+        const questionElement = document.createElement("div");
+        questionElement.classList.add("question");
+        questionElement.innerHTML = `
+          <h3>${q.question}</h3>
+          ${q.choices.map((choice, i) => `
+            <label>
+              <input type="radio" name="question${index}" value="${choice}">
+              ${choice}
+            </label>
+          `).join('')}
+        `;
+        quizContainer.appendChild(questionElement);
+      });
+    }
+
+
+    function retryQuiz() {
+  document.getElementById("quiz").innerHTML = ""; // مسح الأسئلة القديمة
+  document.getElementById("result").style.display = "none";
+  document.getElementById("encouragement").style.display = "none";
+  document.getElementById("retryBtn").style.display = "none";
+  loadQuestions(); // تحميل أسئلة جديدة
+}
+
+let countdownInterval;
+let timeLeft = 60; // الوقت بالثواني (مثلاً 60 ثانية)
+
+function startTimer(duration) {
+  const timerDisplay = document.getElementById("timer");
+  const timeText = document.getElementById("time");
+  timerDisplay.style.display = "block";
+
+  timeLeft = duration;
+  updateDisplay();
+
+  countdownInterval = setInterval(() => {
+    timeLeft--;
+    updateDisplay();
+
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      submitQuiz(); // ينفذ التصحيح تلقائيًا بعد انتهاء الوقت
+    }
+  }, 1000);
+}
+
+function updateDisplay() {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  document.getElementById("time").textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+}
+
+loadQuestions();
+startTimer(1800); // شغّل العداد لمدته بالثواني
+
+
+
+window.addEventListener("beforeunload", function (e) {
+  if (!resultShown) {
+    e.preventDefault();
+    e.returnValue = ''; // ضروري لبعض المتصفحات
+    return ''; // للمتصفحات القديمة
+  }
+});
+
+  </script>
+
+</body>
+
+</html>

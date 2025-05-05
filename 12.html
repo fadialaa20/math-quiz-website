@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنك أسئلة الرياضيات </title>
+    <meta name="description" content="موقع تفاعلي يقدم أسئلة واختبارات في مادة الرياضيات للصفوف من الأول حتى الثاني عشر بطريقة مشوقة مع التصحيح الفوري.">
+    <meta name="keywords" content="تعليم, رياضيات, اختبارات, أسئلة, بنك أسئلة, الصف الأول, الصف الثاني, الصف الثالث, تعليم إلكتروني, امتحانات تفاعلية, تعليم عن بعد">
+    <meta name="author" content="بنك أسئلة الرياضيات">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3656354195059392"
+     crossorigin="anonymous"></script>
+
+
+  </head>
+<body>
+  <!-- Math -->
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3656354195059392"
+    data-ad-slot="8524841326"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  <h1>أسئلة رياضيات - الصف الثاني عشر علمي</h1>
+
+  <div id="timer" style="font-size: 20px; font-weight: bold; color: red; margin: 20px 0; display: none;">
+    الوقت المتبقي: <span id="time">--:--</span>
+  </div>
+
+  <div id="quiz"></div>
+
+  <button onclick="submitQuiz()">تصحيح</button>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="retryBtn" onclick="retryQuiz()" style="
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    ">إعادة المحاولة</button>
+  </div>
+  
+
+  <div id="result" class="result" style="display:none;"></div>
+  <div id="encouragement" class="encouragement" style="display:none;"></div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <button onclick="window.location.href='index.html'" style="
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    ">
+      الرجوع إلى الصفحة الرئيسية
+    </button>
+  </div>
+  
+  <script>
+    let resultShown = false;
+
+    const questions = [
+  {
+    question: "إذا كانت الدالة f(x) = x³ - 4x² + 6x - 2، فما هي مشتقتها؟",
+    options: ["f'(x) = 3x² - 8x + 6", "f'(x) = 3x² - 4x + 6", "f'(x) = 2x³ - 4x + 2", "f'(x) = 3x² - 2x + 1"],
+    answer: "f'(x) = 3x² - 8x + 6"
+  },
+  {
+    question: "ما هي قيمة التكامل: ∫ (4x² - 5x + 3) dx؟",
+    options: ["(4/3)x³ - (5/2)x² + 3x + C", "(4/3)x³ - (5/2)x + 3x + C", "(3/2)x³ - (5/3)x² + 3x + C", "(4/3)x² - 5x + 3 + C"],
+    answer: "(4/3)x³ - (5/2)x² + 3x + C"
+  },
+  {
+    question: "إذا كانت النقاط A(1, 2) و B(3, 4)، فما هو ميل الخط المستقيم المار بالنقطتين؟",
+    options: ["1", "2", "1/2", "3/2"],
+    answer: "1"
+  },
+  {
+    question: "إذا كانت معادلة الدالة هي f(x) = e^x - 2x، فما هي قيمة f'(0)؟",
+    options: ["1", "0", "-1", "2"],
+    answer: "1"
+  },
+  {
+    question: "إذا كانت الدالة f(x) = ln(x), فما هو التكامل ∫ ln(x) dx؟",
+    options: ["x ln(x) - x + C", "x² ln(x) - x + C", "x ln(x) + C", "x² ln(x) + C"],
+    answer: "x ln(x) - x + C"
+  },
+  {
+    question: "حل المعادلة التفاضلية التالية: y'' - 3y' + 2y = 0",
+    options: ["y = C₁e^(2x) + C₂e^x", "y = C₁e^(x) + C₂e^(3x)", "y = C₁e^x + C₂e^(2x)", "y = C₁e^(3x) + C₂e^(2x)"],
+    answer: "y = C₁e^(2x) + C₂e^x"
+  },
+  {
+    question: "إذا كانت معادلة الدالة هي f(x) = 3x² - 2x + 1، فما هو الجذر التربيعي لهذه المعادلة؟",
+    options: ["x = (2 ± √4) / 6", "x = (2 ± √6) / 3", "x = (2 ± √5) / 6", "x = (1 ± √3) / 3"],
+    answer: "x = (2 ± √4) / 6"
+  },
+  {
+    question: "ما هو طول القوس المرسوم من الزاوية 30° في دائرة نصف قطرها 10؟",
+    options: ["5", "π/3", "π/2", "5π/6"],
+    answer: "5"
+  },
+  {
+    question: "ما هو معكوس الدالة: f(x) = 2x + 3؟",
+    options: ["f⁻¹(x) = (x - 3)/2", "f⁻¹(x) = (x + 3)/2", "f⁻¹(x) = 2x - 3", "f⁻¹(x) = 3x + 2"],
+    answer: "f⁻¹(x) = (x - 3)/2"
+  },
+  {
+    question: "ما هو الحل العام للمعادلة التفاضلية الأولى: y' = y - x؟",
+    options: ["y = Ce^x + x", "y = Ce^x - x", "y = C + x", "y = C + e^x"],
+    answer: "y = Ce^x + x"
+  },
+  {
+    question: "إذا كانت المعادلة هي x² + y² = 25، فما هو مشتق المعادلة بالنسبة لـ x؟",
+    options: ["2x + 2y dy/dx = 0", "2x + 2y dy/dx = 25", "2x + 2y dy/dx = 50", "dy/dx = -x/y"],
+    answer: "2x + 2y dy/dx = 0"
+  },
+  {
+    question: "ما هو الحل للمعادلة: ∫ (cos(x) + 2) dx؟",
+    options: ["sin(x) + 2x + C", "-sin(x) + 2x + C", "cos(x) + 2x + C", "sin(x) + x + C"],
+    answer: "sin(x) + 2x + C"
+  },
+  {
+    question: "إذا كانت معادلة المستقيم هي y = 3x + 2، فما هو معادلة المستقيم الذي عمودي عليها؟",
+    options: ["y = -1/3x + b", "y = 3x + b", "y = -3x + b", "y = x + 2"],
+    answer: "y = -1/3x + b"
+  },
+  {
+    question: "إذا كان لدينا سلسلة هندسية ذات الحد الأول 4، والنسبة المشتركة 1/2، فما هو مجموع أول 10 حدود؟",
+    options: ["7.9", "8", "7.8", "7.6"],
+    answer: "7.9"
+  },
+  {
+    question: "ما هو التكامل المحدد ∫₀¹ (x² + 3x) dx؟",
+    options: ["4", "6", "5", "7"],
+    answer: "4"
+  },
+  {
+    question: "إذا كانت معادلة الدالة هي f(x) = 2x² - 3x + 4، فما هو f'(2)؟",
+    options: ["5", "6", "3", "2"],
+    answer: "5"
+  },
+  {
+    question: "ما هو الحد الأقصى لقيمة الدالة f(x) = -x² + 6x - 8؟",
+    options: ["4", "3", "5", "6"],
+    answer: "5"
+  },
+  {
+    question: "حل المعادلة التفاضلية التالية: y'' + 4y = 0",
+    options: ["y = C₁cos(2x) + C₂sin(2x)", "y = C₁e^(2x) + C₂e^(-2x)", "y = C₁sin(x) + C₂cos(x)", "y = C₁cos(4x) + C₂sin(4x)"],
+    answer: "y = C₁cos(2x) + C₂sin(2x)"
+  },
+  {
+    question: "إذا كانت معادلة المثلث هي x² + 2x + 1 = 0، فما هي قيمة x؟",
+    options: ["-1", "1", "0", "-2"],
+    answer: "-1"
+  }
+];
+
+
+    // Function to select 10 random questions from the array
+    function getRandomQuestions(questions, num) {
+      const shuffled = [...questions].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, num);
+    }
+
+    function submitQuiz() {
+  let score = 0;
+  const totalQuestions = 10;
+  const answers = document.querySelectorAll('input[type="radio"]:checked');
+  const correctAnswers = randomQuestions.map((q) => q.answer);
+
+  // تصحيح وتلوين الأسئلة
+  randomQuestions.forEach((q, index) => {
+    const radios = document.getElementsByName(`question${index}`);
+    radios.forEach((radio) => {
+      radio.disabled = true; // تعطيل التغيير
+      if (radio.value === q.answer) {
+        radio.parentElement.style.color = 'green'; // صحيح
+      } else if (radio.checked) {
+        radio.parentElement.style.color = 'red'; // خطأ
+      }
+    });
+
+    const selected = Array.from(radios).find(r => r.checked);
+    if (selected && selected.value === q.answer) {
+      score++;
+    }
+  });
+
+  // عرض النتيجة
+  let resultText = `لقد أجبت على ${score} من ${totalQuestions} سؤالًا بشكل صحيح.`;
+  document.getElementById("result").innerHTML = resultText;
+  document.getElementById("result").style.display = "block";
+
+  resultShown = true;
+
+
+  // رسالة تشجيعية
+  let encouragementText = "";
+  if (score === totalQuestions) {
+    encouragementText = "ممتاز! كل الأسئلة صحيحة.";
+  } else if (score >= totalQuestions * 0.7) {
+    encouragementText = "جيد جدًا! لديك بعض الأخطاء.";
+  } else {
+    encouragementText = "تحتاج إلى مراجعة بعض الأسئلة، لا تيأس!";
+  }
+  document.getElementById("encouragement").innerHTML = encouragementText;
+  document.getElementById("encouragement").style.display = "block";
+
+  // عرض زر إعادة المحاولة
+  document.getElementById("retryBtn").style.display = "inline-block";
+}
+
+
+    function loadQuestions() {
+  const quizContainer = document.getElementById("quiz");
+  randomQuestions = getRandomQuestions(questions, 10);  // صحّحنا هنا أيضًا الاسم
+  randomQuestions.forEach((q, index) => {
+    const questionElement = document.createElement("div");
+    questionElement.classList.add("question");
+    questionElement.innerHTML = `
+      <h3>${q.question}</h3>
+      ${q.options.map((choice, i) => `
+        <label>
+          <input type="radio" name="question${index}" value="${choice}">
+          ${choice}
+        </label>
+      `).join('')}
+    `;
+    quizContainer.appendChild(questionElement);
+  });
+}
+
+
+
+    function retryQuiz() {
+  document.getElementById("quiz").innerHTML = ""; // مسح الأسئلة القديمة
+  document.getElementById("result").style.display = "none";
+  document.getElementById("encouragement").style.display = "none";
+  document.getElementById("retryBtn").style.display = "none";
+  loadQuestions(); // تحميل أسئلة جديدة
+}
+
+
+let countdownInterval;
+let timeLeft = 60; // الوقت بالثواني (مثلاً 60 ثانية)
+
+function startTimer(duration) {
+  const timerDisplay = document.getElementById("timer");
+  const timeText = document.getElementById("time");
+  timerDisplay.style.display = "block";
+
+  timeLeft = duration;
+  updateDisplay();
+
+  countdownInterval = setInterval(() => {
+    timeLeft--;
+    updateDisplay();
+
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      submitQuiz(); // ينفذ التصحيح تلقائيًا بعد انتهاء الوقت
+    }
+  }, 1000);
+}
+
+function updateDisplay() {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  document.getElementById("time").textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+}
+
+loadQuestions();
+startTimer(1800); // شغّل العداد لمدته بالثواني
+
+window.addEventListener("beforeunload", function (e) {
+  if (!resultShown) {
+    e.preventDefault();
+    e.returnValue = ''; // ضروري لبعض المتصفحات
+    return ''; // للمتصفحات القديمة
+  }
+});
+
+  </script>
+
+</body>
+</html>
