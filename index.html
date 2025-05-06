@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بنك أسئلة الرياضيات</title>
-    <meta name="description" content="موقع تفاعلي يقدم أسئلة واختبارات في مادة الرياضيات للصفوف من الأول حتى الثاني عشر بطريقة مشوقة مع التصحيح الفوري.">
-    <meta name="keywords" content="تعليم, رياضيات, اختبارات, أسئلة, بنك أسئلة, الصف الأول, الصف الثاني, الصف الثالث, تعليم إلكتروني, امتحانات تفاعلية, تعليم عن بعد">
+    <meta name="description"
+      content="موقع تفاعلي يقدم أسئلة واختبارات في مادة الرياضيات للصفوف من الأول حتى الثاني عشر بطريقة مشوقة مع التصحيح الفوري.">
+    <meta name="keywords"
+      content="تعليم, رياضيات, اختبارات, أسئلة, بنك أسئلة, الصف الأول, الصف الثاني, الصف الثالث, تعليم إلكتروني, امتحانات تفاعلية, تعليم عن بعد">
     <meta name="author" content="بنك أسئلة الرياضيات">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3656354195059392"
-     crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script>
 
   </head>
-  
+
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -26,29 +30,36 @@
     nav {
       background-color: #007bff;
       padding: 10px 0;
+      overflow-x: auto;
+      white-space: nowrap;
     }
 
     nav ul {
       list-style-type: none;
-      text-align: center;
       margin: 0;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     nav ul li {
-      display: inline;
-      margin: 0 15px;
+      margin: 0 4px;
     }
 
     nav ul li a {
       color: white;
       text-decoration: none;
       font-size: 18px;
+      padding: 4px 8px;
     }
 
     nav ul li a:hover {
       text-decoration: underline;
     }
+
+
 
     /* Content */
     .content {
@@ -66,6 +77,9 @@
       color: #666;
       margin-bottom: 20px;
     }
+    #choice {
+      margin-bottom: -25px;
+    }
 
     .content button {
       background-color: #007bff;
@@ -82,6 +96,85 @@
       background-color: #0056b3;
     }
 
+    .grade-group {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.grade-group h3 {
+  font-size: 20px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* شكل الزر العام */
+.button-group button {
+  font-size: 15px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  min-width: 120px;
+  max-width: 160px;
+}
+
+/* ألوان المراحل */
+.primary button {
+  background-color: #007BFF; /* أخضر هادئ */
+  color: white;
+}
+
+.primary button:hover {
+  background-color: #0056b3;
+}
+
+.middle button {
+  background-color: #007BFF; /* برتقالي هادئ */
+  color: white;
+}
+
+.middle button:hover {
+  background-color: #0056b3;
+}
+
+.secondary button {
+  background-color: #007BFF; /* أزرق فاتح */
+  color: white;
+  padding: 15px 17px;
+
+}
+
+.secondary button:hover {
+  background-color: #0056b3;
+}
+
+/* دعم الجوال */
+@media (max-width: 600px) {
+  .button-group {
+    gap: 8px;
+  }
+
+  .button-group button {
+    min-width: 100px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .grade-group h3 {
+    font-size: 18px;
+  }
+}
+
+
+
     /* Footer */
     footer {
       background-color: #333;
@@ -92,6 +185,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
@@ -120,32 +214,49 @@
   font-size: 18px;
   font-weight: bold;
 ">
-  🔔 تنبيه هام: يتم تحديث بنك الأسئلة بشكل أسبوعي — عُد كل أسبوع لتجد أسئلة جديدة!
-</div>
+      🔔 تنبيه هام: يتم تحديث بنك الأسئلة بشكل أسبوعي — عُد كل أسبوع لتجد أسئلة جديدة!
+    </div>
 
 
-    <p>اختر الصف الدراسي لبدء التحدي!</p>
-    
-    <button onclick="window.location.href='1.html'">الصف الأول</button>
-    <button onclick="window.location.href='2.html'">الصف الثاني</button>
-    <button onclick="window.location.href='3.html'">الصف الثالث</button>
-    <button onclick="window.location.href='4.html'">الصف الرابع</button>
-    <button onclick="window.location.href='5.html'">الصف الخامس</button>
-    <button onclick="window.location.href='6.html'">الصف السادس</button>
-    <button onclick="window.location.href='7.html'">الصف السابع</button>
-    <button onclick="window.location.href='8.html'">الصف الثامن</button>
-    <button onclick="window.location.href='9.html'">الصف التاسع</button>
-    <button onclick="window.location.href='10.html'">الصف العاشر</button>
-
-    <button onclick="window.location.href='11.html'">الصف الحادي عشر علمي</button>
-    <button onclick="window.location.href='11a.html'">الصف الحادي عشر أدبي</button>
-
-    <button onclick="window.location.href='12.html'">الصف الثاني عشر علمي</button>
-    <button onclick="window.location.href='12a.html'">الصف الثاني عشر أدبي</button>
+    <p id="choice">اختر الصف الدراسي لبدء التحدي!</p>
   </div>
+  <div class="grade-group primary">
+    <h3>📘 المرحلة الابتدائية</h3>
+    <div class="button-group">
+      <button onclick="window.location.href='1.html'">الصف الأول</button>
+      <button onclick="window.location.href='2.html'">الصف الثاني</button>
+      <button onclick="window.location.href='3.html'">الصف الثالث</button>
+      <button onclick="window.location.href='4.html'">الصف الرابع</button>
+      <button onclick="window.location.href='5.html'">الصف الخامس</button>
+      <button onclick="window.location.href='6.html'">الصف السادس</button>
+    </div>
+  </div>
+  
+  <div class="grade-group middle">
+    <h3>📙 المرحلة الإعدادية</h3>
+    <div class="button-group">
+      <button onclick="window.location.href='7.html'">الصف السابع</button>
+      <button onclick="window.location.href='8.html'">الصف الثامن</button>
+      <button onclick="window.location.href='9.html'">الصف التاسع</button>
+    </div>
+  </div>
+  
+  <div class="grade-group secondary">
+    <h3>📕 المرحلة الثانوية</h3>
+    <div class="button-group">
+      <button onclick="window.location.href='10.html'">الصف العاشر</button>
+      <button onclick="window.location.href='11.html'">الصف الحادي عشر علمي</button>
+      <button onclick="window.location.href='11a.html'">الصف الحادي عشر أدبي</button>
+      <button onclick="window.location.href='12.html'">الصف الثاني عشر علمي</button>
+      <button onclick="window.location.href='12a.html'">الصف الثاني عشر أدبي</button>
+    </div>
+  </div>
+  
 
-    <!-- Math -->
-    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3656354195059392"
+
+
+  <!-- Math -->
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3656354195059392"
     data-ad-slot="8524841326"></ins>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
@@ -156,5 +267,8 @@
     <p>&copy; 2025 موقع الأسئلة التعليمية. جميع الحقوق محفوظة.</p>
   </footer>
 
+
+
 </body>
+
 </html>
