@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
   <meta charset="UTF-8">
   <title>اتصل بنا</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="موقع تفاعلي يقدم أسئلة واختبارات في مادة الرياضيات للصفوف من الأول حتى الثاني عشر بطريقة مشوقة مع التصحيح الفوري.">
-  <meta name="keywords"
-    content="تعليم, رياضيات, اختبارات, أسئلة, بنك أسئلة, الصف الأول, الصف الثاني, الصف الثالث, تعليم إلكتروني, امتحانات تفاعلية, تعليم عن بعد">
+  <meta name="description" content="موقع تفاعلي يقدم أسئلة واختبارات في مادة الرياضيات للصفوف من الأول حتى الثاني عشر بطريقة مشوقة مع التصحيح الفوري.">
+  <meta name="keywords" content="تعليم, رياضيات, اختبارات, أسئلة, بنك أسئلة, الصف الأول, الصف الثاني, الصف الثالث, تعليم إلكتروني, امتحانات تفاعلية, تعليم عن بعد">
   <meta name="author" content="بنك أسئلة الرياضيات">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3656354195059392"
-    crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3656354195059392" crossorigin="anonymous"></script>
 
-  <!-- EmailJS -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function () {
-      emailjs.init("QcSrr4o61zHvM3t9B"); // Your Public Key
+    (function() {
+      emailjs.init("QcSrr4o61zHvM3t9B"); // Replace with your public key
     })();
   </script>
 
@@ -41,8 +37,7 @@
       align-items: center;
     }
 
-    input,
-    textarea {
+    input, textarea {
       width: 80%;
       padding: 10px;
       margin: 10px 0;
@@ -65,7 +60,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <h1>اتصل بنا</h1>
@@ -83,44 +77,32 @@
   </form>
 
   <div style="text-align: center; margin-top: 40px;">
-    <button onclick="window.location.href='index.html'" style="
-      background-color: #007bff;
-      color: white;
-      font-size: 16px;
-      padding: 10px 25px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    ">
+    <button onclick="window.location.href='index.html'" style="background-color: #007bff; color: white; font-size: 16px; padding: 10px 25px; border: none; border-radius: 6px; cursor: pointer;">
       الرجوع إلى الصفحة الرئيسية
     </button>
   </div>
 
-  <!-- Math -->
-  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3656354195059392"
-    data-ad-slot="8524841326"></ins>
+  <!-- إعلان -->
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3656354195059392" data-ad-slot="8524841326"></ins>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 
-
+  <!-- EmailJS إرسال -->
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-      e.preventDefault();
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-      emailjs.send("service_jfzi0vj", "template_1wbyifl", {
-        name: this.name.value,
-        email: this.email.value,
-        message: this.message.value,
-      }).then(() => {
-        alert('تم إرسال رسالتك بنجاح!');
-        this.reset();
-      }, (error) => {
-        alert('حدث خطأ أثناء الإرسال. الرجاء المحاولة لاحقًا.');
-        console.error(error);
-      });
+      emailjs.sendForm("service_jfzi0vj", "template_1wbyifl", this)
+        .then(function() {
+          alert("تم إرسال الرسالة بنجاح!");
+          document.getElementById("contact-form").reset();
+        }, function(error) {
+          console.error("فشل في الإرسال:", error);
+          alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+        });
     });
   </script>
-</body>
 
+</body>
 </html>
